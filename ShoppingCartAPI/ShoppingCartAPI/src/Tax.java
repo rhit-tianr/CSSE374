@@ -111,7 +111,7 @@ public class Tax {
 		}else if(this.state.equals("HI")) {
 			this.money = this.money * 1.0444;
 		}else {
-			return "Error";
+			return "Error: please pass state in correct format like 'IN'";
 		}
 		return Double.toString(this.money);	
 	}

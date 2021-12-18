@@ -8,8 +8,8 @@ public class Item {
 	double price;
 	double discountedPrice;
 	String picture;
-	myDataBase mDB = new myDataBase();
-	public Item(int itemID, String itemName, int quantityInStock, String description, double price, double discountedPrice, String picture){
+	myDataBase mDB;
+	public Item(int itemID, String itemName, int quantityInStock, String description, double price, double discountedPrice, String picture, myDataBase mDB){
 		this.itemID = itemID;
 		this.itemName = itemName;
 		this.quantityInStock = quantityInStock;
@@ -17,6 +17,7 @@ public class Item {
 		this.price = price;
 		this.discountedPrice = discountedPrice;
 		this.picture = picture;
+		this.mDB = mDB;
 	}
 	
 	public String getName(int id) {

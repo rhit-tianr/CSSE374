@@ -1,24 +1,27 @@
 import java.util.List;
 
 public class Request {
-	private int userID;
-	private String shipState;
-	private myDataBase db;
-	Cart userCart = db.userCart.get(userID);
+	int userID;
+	myDataBase db;
+	Cart userCart;
 	
-	public Request(int userID, String shipState, myDataBase db) {
+	public Request(int userID, myDataBase db) {
 		this.userID = userID;
-		this.shipState = shipState;
 		this.db = db;
+		this.userCart = db.userCart.get(userID);
 	}
 	
 	public String handleViewCart(int userID, String shipState) {
-		String a = userCart.viewCart(this.shipState);
+		String a = userCart.viewCart(shipState);
 		return null;
 	}
 	
 	public String addItem(int itemID, int quantity) {
+		System.out.println("req: "+itemID);
 		return userCart.addItem(itemID, quantity);
 	}
 
+	public String applyDiscount(int itemID, String discount) {
+		return userCart.applyDiscount(itemID, discount);
+	}
 }
