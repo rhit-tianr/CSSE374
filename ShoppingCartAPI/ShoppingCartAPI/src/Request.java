@@ -2,13 +2,13 @@ import java.util.List;
 
 public class Request {
 	int userID;
-	myDataBase db;
+	myDataBase mDb;
 	Cart userCart;
 	
 	public Request(int userID, myDataBase db) {
 		this.userID = userID;
-		this.db = db;
-		this.userCart = db.userCart.get(userID);
+		this.mDb = db;
+		
 	}
 	
 	public String handleViewCart(int userID, String shipState) {
@@ -17,7 +17,8 @@ public class Request {
 	}
 	
 	public String addItem(int itemID, int quantity) {
-		System.out.println("req: "+itemID);
+		this.userCart = mDb.userCart.get(userID);
+		System.out.println("total: "+userCart.getTotalItemNum());
 		return userCart.addItem(itemID, quantity);
 	}
 

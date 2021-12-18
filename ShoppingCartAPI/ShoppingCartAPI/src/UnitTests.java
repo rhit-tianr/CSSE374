@@ -18,30 +18,28 @@ class UnitTests {
 	Request req = new Request(userID, mDB);
 	
 	
-//	@Test
-//	void viewCartTest() {
-//		int userID = 1;
-//
-//		Cart cart = new Cart(0, 0.0, 0.0, 0);
-//		mDB.userCart.put(1, cart);
-//		System.out.println("test#1: view empty cart");
-//		System.out.println(mDB.userCart.get(1).totalCost);
-//		mDB.userCart.clear();
-//		
-//		mDB.Inventory.put(1, apple);
-//		System.out.println(mDB.Inventory.get(1).toStringList());
-//
-//	}
+	@Test
+	void viewCartTest() {
+
+		Cart cart = new Cart(0, 0.0, 0.0, 0, mDB);
+		mDB.userCart.put(1, cart);
+		System.out.println("test#1: view empty cart");
+		System.out.println(mDB.userCart.get(1).totalCost);
+		mDB.userCart.clear();
+		
+		mDB.Inventory.put(1, apple);
+		System.out.println(mDB.Inventory.get(1).toStringList());
+
+	}
 
 	
 	@Test
 	void addItemTest() {
 		Cart cart = new Cart(0, 0.0, 0.0, 0, mDB);
+		
 		mDB.userCart.put(userID, cart);
 		mDB.Inventory.put(1, apple);
 		mDB.Inventory.put(2, coke);
-		System.out.println(mDB.Inventory.get(2).itemName);
-		
 		String addCoke = req.addItem(2, 3);
 		String result1 = addCoke.substring(0, 10);
 		System.out.println("result1: " + result1);
@@ -66,7 +64,7 @@ class UnitTests {
 	}
 	
 	@Test
-	void applyDiscount() {
+	void applyDiscountTest() {
 		int userID = 2;
 		Cart cart = new Cart(0, 0.0, 0.0, 0, mDB);
 		mDB.userCart.put(userID, cart);
@@ -76,6 +74,11 @@ class UnitTests {
 		mDB.discounts.put(appleDis.discountCode, appleDis);
 		mDB.discounts.put(phoneDis1.discountCode, phoneDis1);
 		mDB.discounts.put(phoneDis2.discountCode, phoneDis2);
+		
+	}
+	
+	@Test
+	void changeCartQuantityTest() {
 		
 	}
 
